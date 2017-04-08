@@ -1,0 +1,65 @@
+\documentclass[a4paper,12pt,oneside,brazil,onecolumn]{IEEEtran}
+\usepackage[brazil]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr} 			%Pacote para cabeçalho 
+\usepackage{graphicx}			% pacote para importação deimagens
+\usepackage{xcolor}				%pacote de cores
+\usepackage[pdfauthor=Adson Batista, pdftitle={Documentos UFABC}, pdfsubject={Documentos UFABC, Lista presença}, pdfkeywords={Cursos 2017,IEEE UFABC, Documentos}, pdfproducer=``Diretoria Ramo 2017'', pdfcreator=pdflatex]{hyperref}  %pacote para link e email + METADATA
+
+\definecolor{IEEEBlue}{RGB}{0, 98, 155}
+
+%Redefinindo cabeçalho para colocar as figuras
+\setlength{\headheight}{75pt} 
+\setlength{\footskip}{35pt}
+\voffset=-35pt
+
+%defino linhas de cabeçalho e rodapé
+\renewcommand{\headrulewidth}{0.4pt}% Default \headrulewidth is 0.4pt
+  \renewcommand{\headrule}{\hbox to\headwidth{%
+    \color{IEEEBlue}\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\footrulewidth}{0.4pt}% Default \footrulewidth is 0pt
+  \renewcommand{\footrule}{\hbox to\headwidth{%
+    \color{IEEEBlue}\leaders\hrule height \headrulewidth\hfill}}
+%Cabeçalho
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[OR]{
+\vspace{25pt}
+	\includegraphics[height=3\baselineskip]{imagens/logo_ufabc.pdf}
+}
+
+\fancyfoot[OC]{\begin{tabular}{c{}}Student Branch IEEE UFABC \\ Avenida dos Estados, 5001 - Sala 009-B -  Bloco A\ \\ CEP 09210-170 - Bangu - Santo Andre - SP - Brasil\\ contato@ieeeufabc.org\end{tabular}}
+
+
+\begin{document}
+
+\begin{center}
+		\textcolor{IEEEBlue}{\LARGE Lista de presença curso de \LaTeX}
+	\end{center}
+	\vspace*{1.5cm}
+
+\begin{tabular}{lll}
+				 				  & \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[5pt]		
+								  & \textbf{Responsável no}		&\textbf{Responsável no} 	\\
+					  			  & \textbf{dia 4 de Abril}	 	&\textbf{dia 6 de Abril} 	\\[25pt]
+\textbf{Nome}    				  & \textbf{Assinatura} 		&\textbf{Assinatura} 		\\[15pt]
+Ana Beatriz Araujo Carballeira    & \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[15pt]
+Camila do Amaral  Sass            & \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[15pt]
+Eddie Weiss                       & \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[15pt]
+Gabriela Bertoni dos Santos       & \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[15pt]
+Guilherme Ribeiro Portugal        & \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[15pt]
+Leonardo Andrade Castro           & \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[15pt]
+Matheus Túlio Pereira da Cruz     & \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[15pt]
+Pedro Gabriel Lourenço            & \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[15pt]
+Raquel da Silva Barros            & \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[15pt]
+Vitória Garcia Alvarez            & \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[15pt]
+Wellington do Nascimento Pinheiro & \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[15pt]
+\rule{7cm}{.1mm} 				  & \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[15pt]
+\rule{7cm}{.1mm} 				  & \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[15pt]
+\rule{7cm}{.1mm} 				  & \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[15pt]
+\rule{7cm}{.1mm} 				  & \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[15pt]
+\rule{7cm}{.1mm} 				  & \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[15pt]
+\rule{7cm}{.1mm} 				  & \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\
+\end{tabular}
+\end{document}

@@ -1,1 +1,1 @@
-Lista-Curso-de-LaTeX
+Lista Curso de LaTeX
