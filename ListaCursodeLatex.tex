@@ -1,60 +1,106 @@
+%----------------------------------------------------------------
+%Utilize compilação XELaTeX para que tudo saia como deveria sair.
+%----------------------------------------------------------------
 \documentclass[12pt]{article}
+%%Metodos de entrada
 \usepackage[brazil]{babel}
 \usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage[showframe,a4paper,left=2cm,right=2cm,top=3.5cm,bottom=3.5cm,footskip=2cm,headheight=3cm]{geometry}
-\usepackage{fancyhdr} 			%Pacote para cabeçalho  
-\usepackage{longtable}
-\usepackage{graphicx}			% pacote para importação deimagens
-\usepackage{color}				%pacote de cores
+%\usepackage[utf8]{inputenc}
+%%Definiçoes de margem e roda pé... coloque showframe em [] e veja os limites
+\usepackage[a4paper,left=2cm,right=2cm,top=3.5cm,bottom=3.5cm,footskip=2cm,headheight=3cm]{geometry}
+\usepackage{fancyhdr} 			%Pacote para cabeçalho
+\usepackage{lastpage}			%pacote para verificar numero de paginas do documento
+\usepackage{longtable}			%Pacote para criar tabelas que quebram as paginas
+\usepackage{graphicx}			%Pacote para importação de imagens
+\usepackage{xcolor}				%pacote de cores
+\definecolor{IEEEBlue}{RGB}{0, 98, 155} %define a cor Azul IEEE
+
+%todo: Pesquisar como colocar propriedades dos documentos em XELaTeX.
+
 %\usepackage[pdfauthor=Adson Batista, pdftitle={Documentos UFABC}, pdfsubject={Documentos UFABC, Lista presença}, pdfkeywords={Cursos 2017,IEEE UFABC, Documentos}, pdfproducer=``Diretoria Ramo 2017'', pdfcreator=pdflatex]{hyperref}  %pacote para link e email + METADATA
 %%%%%Fonte Verdana%%%
+
+%%%Cria box e define cordenadas para numeração de pagina
+\usepackage[pscoord]{eso-pic}% The zero point of the coordinate systemis the lower left corner of the page (the default).
+
+\newcommand{\placetextbox}[3]{% \placetextbox{<horizontal pos>}{<vertical pos>}{<stuff>}
+  \setbox0=\hbox{#3}% Put <stuff> in a box
+  \AddToShipoutPictureFG*{% Add <stuff> to current page foreground
+    \put(\LenToUnit{#1\paperwidth},\LenToUnit{#2\paperheight}){\vtop{{\null}\makebox[0pt][c]{#3}}}%
+  }%
+}%
+
+% Definição de fonte
 \usepackage{fontspec}
 \defaultfontfeatures{Mapping=text-text}
 \setsansfont{Verdana}
 \renewcommand*{\familydefault}{\sfdefault}
 
-\definecolor{IEEEBlue}{RGB}{0, 98, 155}
-
+%% Imagem do Cabeçalho
 \fancyhead[OR]{
 	\includegraphics[height=2cm]{imagens/logo_ufabc.pdf}
 	\vspace{-.3cm}
 }
+
+%% Linha do Cabeçalho
 \renewcommand{\headrulewidth}{0.5pt}% 2pt header rule
 \renewcommand{\headrule}{\hbox to\headwidth{%
 \color{IEEEBlue}\leaders\hrule height \headrulewidth\hfill}}
 
+%% Texto do Rodapé
 \fancyfoot[OC]{\begin{tabular}{c{}}Student Branch IEEE UFABC \\ Avenida dos Estados, 5001 - Sala 009-B -  Bloco A\ \\ CEP 09210-170 - Bangu - Santo Andre - SP - Brasil\\ contato@ieeeufabc.org\end{tabular}}
+\rfoot{}
+%% Linha do Rodapé
 \renewcommand{\footrulewidth}{0.5pt}% Default \footrulewidth is 0pt
 \renewcommand{\footrule}{\hbox to\headwidth{%
 \color{IEEEBlue}\leaders\hrule height \headrulewidth\hfill}}
 
+%Define uma caixa em background
+\usepackage[color=black,opacity=1,angle=0,scale=1]{background}
+\backgroundsetup{
+  contents={\placetextbox{.845}{.91}{Pg. \thepage \hspace{1pt} de \pageref{LastPage}}%
+	\vspace{-10cm}
+	}
+}
+%% Inicio do documento
 \begin{document}
-	\pagestyle{fancy}
+	\pagestyle{fancy} %define tipo de pagina como a com o logo do IEEE
+%Titulo do documento vai aqui
 	\begin{center}
-		\textcolor{IEEEBlue}{\LARGE Lista de presença curso de \LaTeX}
+		\textcolor{IEEEBlue}{\LARGE Lista de presenca curso de \LaTeX}
 	\end{center}
 	\vspace{1.5cm}
+%Tabela com as pessoas - neste caso que são dois dias foram 3 colunas.
 	\begin{longtable}{lll}
+%Estas linhas tem o campo para identificar a pessoa responsavel pelo evento e o dia que ela foi responsável.
 										  			& \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[5pt]
-										  			& \textbf{Responsável no}	&\textbf{Responsável no} 	\\
+										  			& \textbf{Responsavel no}	&\textbf{Responsavel no} 	\\
 										  			& \textbf{dia 4 de Abril}	&\textbf{dia 6 de Abril} 	\\[25pt]
 		\textbf{Nome}    				  			& \textbf{Assinatura} 		&\textbf{Assinatura} 		\\[15pt]
+%inicio dos nomes \hrulefill preenche o restante do espaço com uma linha
 		Ana Beatriz Araujo Carballeira 	 \hrulefill & \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[15pt]
 		Camila do Amaral  Sass 			 \hrulefill & \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[15pt]
 		Eddie Weiss 					 \hrulefill & \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[15pt]
 		Gabriela Bertoni dos Santos      \hrulefill & \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[15pt]
 		Guilherme Ribeiro Portugal       \hrulefill & \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[15pt]
 		Leonardo Andrade Castro          \hrulefill & \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[15pt]
-		Matheus Túlio Pereira da Cruz    \hrulefill & \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[15pt]
+		Matheus Tulio Pereira da Cruz    \hrulefill & \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[15pt]
 		Pedro Gabriel Lourenço           \hrulefill & \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[15pt]
 		Raquel da Silva Barros           \hrulefill & \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[15pt]
-		Vitória Garcia Alvarez           \hrulefill & \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[15pt]
+		Vitoria Garcia Alvarez           \hrulefill & \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[15pt]
 		Wellington do Nascimento Pinheiro\hrulefill & \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[15pt]
 		\rule{7cm}{.1mm} 				 			& \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[15pt]
 		\rule{7cm}{.1mm} 				 			& \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[15pt]
 		\rule{7cm}{.1mm} 				 			& \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[15pt]
 		\rule{7cm}{.1mm} 				 			& \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[15pt]
-		\rule{7cm}{.1mm} 				 			& \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			
+		\rule{7cm}{.1mm} 				 			& \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[15pt]
+		\rule{7cm}{.1mm} 				 			& \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[15pt]
+		\rule{7cm}{.1mm} 				 			& \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[15pt]
+		\rule{7cm}{.1mm} 				 			& \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[15pt]
+		\rule{7cm}{.1mm} 				 			& \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[15pt]
+		\rule{7cm}{.1mm} 				 			& \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}			\\[15pt]
+		\rule{7cm}{.1mm} 				 			& \rule{4cm}{.1mm} 			&\rule{4cm}{.1mm}\\
 	\end{longtable}
+
+%Fim do documento
 \end{document}
